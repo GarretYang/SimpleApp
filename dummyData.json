@@ -1,0 +1,22 @@
+[
+    {
+        "Name": "John",
+        "EID": 1021,
+        "Affliation": ["Student", "Staff"]
+    },
+    {
+        "Name": "Amy",
+        "EID": 1048,
+        "Affliation": ["Student"]
+    },
+    {
+        "Name": "Taylor",
+        "EID": 1230,
+        "Affliation": ["Faculty"]
+    },
+    {
+        "Name": "Eric",
+        "EID": 3021,
+        "Affliation": ["Faculty", "Staff"]
+    }
+]

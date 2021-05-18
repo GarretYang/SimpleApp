@@ -6,18 +6,16 @@
  * @flow strict-local
  */
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
   SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
-  Text,
   useColorScheme,
-  View,
 } from 'react-native';
 
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import Home from './screens/Home';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -26,23 +24,9 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const [items, setItems] = useState([1,2,3]);
-
   return (
     <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        {
-          items.map((item) => ((
-            <View key={item}>
-              <Text>{item}</Text>
-            </View>
-          )))
-        }
-
-      </ScrollView>
+      <Home />
     </SafeAreaView>
   );
 };
