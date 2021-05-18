@@ -9,7 +9,6 @@
 import React from 'react';
 import {
   SafeAreaView,
-  StatusBar,
   StyleSheet,
   useColorScheme,
 } from 'react-native';
