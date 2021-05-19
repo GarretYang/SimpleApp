@@ -9,12 +9,17 @@ import {
 } from 'react-native';
 import CardView from 'react-native-cardview';
 import dummyData from '../dummyData.json';
+import CheckBox from '@react-native-community/checkbox';
 
 const Home = () => {
 
   // useState() creates a state variable and a setState()function to write the state,
   // the component will be re-rendered when the setState() is called
-  const [records, setRecords] = useState(dummyData);
+  let [records, setRecords] = useState(dummyData);
+  let [oddEID, toggleOddEID] = useState(false);
+  let [student, toggleStudent] = useState(false);
+  let [staff, toggleStaff] = useState(false);
+  let [faculty, toggleFaculty] = useState(false);
 
   const DisplayCard = ({item}) => (
     <CardView
@@ -65,6 +70,71 @@ const Home = () => {
               <DisplayCard key={index} item={record} />
           )}
         </ScrollView>
+      </View>
+      <View style={{height: '20%', alignItems: 'center'}}>
+        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, width: 130, justifyContent: 'space-between'}}>
+        <Text style={{marginRight: 5}}>Odd EID Only</Text> 
+        <CheckBox
+          disabled={false}
+          boxType={'square'}
+          animationDuration={0}
+          value={oddEID}
+          onValueChange={(newValue) => { 
+            toggleOddEID(newValue);
+            const oddEIDs = records.filter((ele) => ele.EID % 2 !== 0);
+            records = oddEIDs;
+          }}
+          style={{height: 15}}
+        />
+        </View>
+
+        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, width: 130, justifyContent: 'space-between'}}>
+        <Text style={{marginRight: 5}}>Student</Text> 
+        <CheckBox
+          disabled={false}
+          boxType={'square'}
+          animationDuration={0}
+          value={student}
+          onValueChange={(newValue) => {
+            toggleStudent(newValue);
+            const students = records.filter((ele) => ele.Affliation.includes('Student'));
+            records = students;
+          }}
+          style={{height: 15}}
+        />
+        </View>
+
+        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, width: 130, justifyContent: 'space-between'}}>
+        <Text style={{marginRight: 5}}>Staff</Text> 
+        <CheckBox
+          disabled={false}
+          boxType={'square'}
+          animationDuration={0}
+          value={staff}
+          onValueChange={(newValue) => {
+            toggleStaff(newValue);
+            const staffs = records.filter((ele) => ele.Affliation.includes('Staff'));
+            records = staffs;
+          }}
+          style={{height: 15}}
+        />
+        </View>
+
+        <View style={{flexDirection: 'row', alignItems: 'center', marginBottom: 10, width: 130, justifyContent: 'space-between'}}>
+          <Text style={{marginRight: 5}}>Faculty</Text> 
+          <CheckBox
+            disabled={false}
+            boxType={'square'}
+            animationDuration={0}
+            value={faculty}
+            onValueChange={(newValue) => {
+              toggleFaculty(newValue);
+              const faculty = records.filter((ele) => ele.Affliation.includes('faculty'));
+              records = faculty;
+            }}
+            style={{height: 15}}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
