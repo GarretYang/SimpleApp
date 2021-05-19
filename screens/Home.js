@@ -11,6 +11,9 @@ import CardView from 'react-native-cardview';
 import dummyData from '../dummyData.json';
 
 const Home = () => {
+
+  // useState() creates a state variable and a setState()function to write the state,
+  // the component will be re-rendered when the setState() is called
   const [records, setRecords] = useState(dummyData);
 
   const DisplayCard = ({item}) => (
