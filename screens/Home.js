@@ -13,6 +13,8 @@ import CheckBox from '@react-native-community/checkbox';
 
 const Home = () => {
 
+  // useState() creates a state variable and a setState()function to write the state,
+  // the component will be re-rendered when the setState() is called
   let [records, setRecords] = useState(dummyData);
   let [oddEID, toggleOddEID] = useState(false);
   let [student, toggleStudent] = useState(false);
@@ -46,7 +48,7 @@ const Home = () => {
             }
           </View>
       </View>
-      <View style={{marginBottom: 10}}>
+      <View style={styles.marginBottom}>
         <Button 
           title='Remove' 
           onPress={() => setRecords(records.filter((ele) => ele.EID !== item.EID))}
@@ -153,6 +155,9 @@ const styles = StyleSheet.create({
   },
   paddingTop: {
     paddingTop: 5,
+  },
+  marginBottom: {
+    marginBottom: 10
   },
   safeAreaWrapper: {
     height: '100%', 
